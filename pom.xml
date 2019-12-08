@@ -9,7 +9,7 @@
     <artifactId>java-11-with-Graal</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>java-11-with-Graal</name>
+    <name>Java 11 with Graal</name>
     <url>https://github.com/MarekDudek/Java-11-with-Graal</url>
 
     <properties>
@@ -199,6 +199,7 @@
                     <imageName>java-11-with-Graal</imageName>
                     <buildArgs>
                         --no-fallback
+                        --language:js --initialize-at-build-time
                     </buildArgs>
                 </configuration>
             </plugin>
@@ -229,7 +230,6 @@
                 <groupId>org.graalvm.sdk</groupId>
                 <artifactId>graal-sdk</artifactId>
                 <version>${graalvm.version}</version>
-                <scope>provided</scope>
             </dependency>
             <!-- common -->
             <dependency>
@@ -272,6 +272,12 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- Graal VM -->
+        <dependency>
+            <groupId>org.graalvm.sdk</groupId>
+            <artifactId>graal-sdk</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!-- common -->
         <dependency>
             <groupId>org.projectlombok</groupId>
