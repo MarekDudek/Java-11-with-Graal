@@ -90,6 +90,11 @@
                     <artifactId>native-image-maven-plugin</artifactId>
                     <version>${graalvm.version}</version>
                 </plugin>
+                <plugin>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <version>1.6.0</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -196,6 +201,23 @@
                         --no-fallback
                     </buildArgs>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>exec-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <executions>
+                    <execution>
+                        <id>Make native application executable</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>bash</executable>
+                            <commandlineArgs>./bin/make-executable.sh</commandlineArgs>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
